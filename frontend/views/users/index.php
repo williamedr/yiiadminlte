@@ -28,16 +28,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
             'username',
             'email:email',
             'first_name',
             'last_name',
-            //'status',
-            //'password_hash',
-            //'password_reset_token',
-            //'verification_token',
-            //'auth_key',
+            [
+                'attribute' => 'status',
+                'value' => function ($data) {
+                    return ($data->status == 1) ? 'Active' : 'Inactive';
+                }
+            ],
+
             //'created_at',
             //'updated_at',
             [

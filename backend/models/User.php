@@ -3,7 +3,6 @@
 namespace backend\models;
 
 use Yii;
-use common\models\User as UserCommon;
 
 /**
  * This is the model class for table "user".
@@ -71,31 +70,5 @@ class User extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
-
-    /**
-     * column status ENUM value labels
-     * @return string[]
-     */
-    public static function optsStatus()
-    {
-        return [
-            UserCommon::STATUS_ACTIVE => 'active',
-            UserCommon::STATUS_INACTIVE => 'inactive',
-        ];
-    }
-
-
-    /**
-     * column status ENUM value labels
-     * @return string[]
-     */
-    public static function optsRoles()
-    {
-        return [
-            'admin' => 'Admin',
-            'user' => 'User',
-        ];
-    }
-
 
 }

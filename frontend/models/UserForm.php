@@ -16,8 +16,8 @@ class UserForm extends Model
     public $first_name;
     public $last_name;
     public $password;
-    public $status;
-    public $role;
+    // public $status;
+    // public $role;
 
 
     /**
@@ -28,7 +28,7 @@ class UserForm extends Model
         return [
             ['username', 'trim'],
             ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\backend\models\User', 'message' => 'This username has already been taken.'],
+            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'trim'],
@@ -45,9 +45,6 @@ class UserForm extends Model
 
             ['last_name', 'trim'],
             ['last_name', 'required'],
-
-            ['status', 'in', 'range' => array_keys(User::optsStatus())],
-            ['role', 'in', 'range' => array_keys(User::optsRoles())],
         ];
     }
 
@@ -59,7 +56,7 @@ class UserForm extends Model
     public function saveUser()
     {
         if (!$this->validate()) {
-            return null;
+            return false;
         }
 
         $user = new User();
@@ -67,16 +64,16 @@ class UserForm extends Model
         $user->email = $this->email;
         $user->first_name = $this->first_name;
         $user->last_name = $this->last_name;
-        $user->status = $this->status;
+        // $user->status = $this->status;
+        $user->status = 1;
 
         $user->setPassword($this->password);
         $user->generateAuthKey();
-        $user->generateEmailVerificationToken();
 
         if ($user->save()) {
             $auth = Yii::$app->authManager;
-            $role = $auth->getRole($this->role);
-            $auth->assign($role, $user->getId());
+            $userRole = $auth->getRole('user');
+            $auth->assign($userRole, $user->getId());
 
             return true;
 

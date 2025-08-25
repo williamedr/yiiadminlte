@@ -212,4 +212,31 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+
+    /**
+     * column status ENUM value labels
+     * @return string[]
+     */
+    public static function optsStatus()
+    {
+        return [
+            self::STATUS_ACTIVE => 'active',
+            self::STATUS_INACTIVE => 'inactive',
+        ];
+    }
+
+
+    /**
+     * column status ENUM value labels
+     * @return string[]
+     */
+    public static function optsRoles()
+    {
+        return [
+            'admin' => 'Admin',
+            'user' => 'User',
+        ];
+    }
+
 }

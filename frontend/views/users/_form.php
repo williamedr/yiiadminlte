@@ -1,7 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+
+// use yii\widgets\ActiveForm;
+use kartik\form\ActiveForm;
+
 
 /** @var yii\web\View $this */
 /** @var backend\models\User $model */
@@ -16,13 +19,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'first_name')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col">
+            <?= $form->field($model, 'first_name')->textInput(['maxlength' => true]) ?>
+        <div>
 
-    <?= $form->field($model, 'last_name')->textInput(['maxlength' => true]) ?>
+        <div class="col">
+            <?= $form->field($model, 'last_name')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'status')->dropDownList([ 'active' => 'Active', 'inactive' => 'Inactive', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'role')->dropDownList([ 'admin' => 'Admin', 'user' => 'User', ], ['prompt' => '']) ?>
 
     <div class="form-group">
         <?= Html::a('Back', 'index', ['class' => 'btn btn-info']) ?>

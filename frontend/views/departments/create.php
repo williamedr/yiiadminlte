@@ -9,9 +9,8 @@ $this->title = 'Create Departments';
 $this->params['breadcrumbs'][] = ['label' => 'Departments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="departments-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="departments-create">
 
     <?= $this->render('_form', [
         'model' => $model,

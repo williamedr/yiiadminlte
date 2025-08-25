@@ -82,7 +82,13 @@ class UsersController extends Controller
         $model = new UserForm();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post()) && $model->saveUser()) {
+                if ($model->saveUser()) {
+                    Yii::$app->session->setFlash('success', 'User created.');
+                } else {
+                    Yii::$app->session->setFlash('danger', 'Error.');
+                }
+
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }

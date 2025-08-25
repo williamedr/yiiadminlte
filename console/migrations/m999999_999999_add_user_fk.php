@@ -25,16 +25,17 @@ class m999999_999999_add_user_fk extends Migration
     // Use up()/down() to run migration code without a transaction.
     public function up()
     {
+        $table = '{{%user}}';
 
         $this->createIndex(
             'idx_user_role_id',
-            '{{%user}}',
+            $table,
             'role_id'
         );
 
         $this->addForeignKey(
             'fk_user_role_id',
-            '{{%user}}',
+            $table,
             'role_id',
             '{{%role}}',
             'id'

@@ -13,7 +13,7 @@ use yii\helpers\Html;
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?=\yii\helpers\Url::home()?>" class="nav-link">Dashboard</a>
+            <a href="/site/index" class="nav-link">Dashboard</a>
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
@@ -184,9 +184,15 @@ use yii\helpers\Html;
             </a>
         </li>
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                 <i class="fas fa-th-large"></i>
+            </a>
+        </li> -->
+
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:darkClick()" role="button">
+                <i class="fas fa-moon"></i>
             </a>
         </li>
 
@@ -197,3 +203,13 @@ use yii\helpers\Html;
     </ul>
 </nav>
 <!-- /.navbar -->
+
+<script>
+    function darkClick() {
+        if ($('body').hasClass('dark-mode')) {
+            $('body').removeClass('dark-mode');
+        } else {
+            $('body').addClass('dark-mode');
+        }
+    }
+</script>

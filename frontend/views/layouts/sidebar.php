@@ -12,6 +12,7 @@
             <div class="image">
                 <img src="<?=$assetDir?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
+
             <div class="info">
                 <a href="#" class="d-block">Alexander Pierce</a>
             </div>
@@ -33,14 +34,17 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <?php
-            echo \hail812\adminlte\widgets\Menu::widget([
-                'items' => [
+                $items = [
                     ['label' => 'Dashboard', 'icon' => 'tachometer-alt'],
                     ['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
-                    ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
                     ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank'],
-                ],
-            ]);
+                ];
+
+            if (Yii::$app->user->can('admin')) {
+                $items[] = ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'];
+            }
+
+            echo \hail812\adminlte\widgets\Menu::widget(['items' => $items]);
             ?>
         </nav>
         <!-- /.sidebar-menu -->

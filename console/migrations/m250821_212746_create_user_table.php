@@ -7,7 +7,7 @@ use yii\db\Migration;
  */
 class m250821_212746_create_user_table extends Migration
 {
-    /**
+	/**
      * {@inheritdoc}
      */
     public function up()
@@ -18,7 +18,9 @@ class m250821_212746_create_user_table extends Migration
             $tableOptions = 'CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=InnoDB';
         }
 
-		$this->createTable('{{%user}}', [
+		$table = '{{%user}}';
+
+		$this->createTable($table, [
 			'id' => $this->primaryKey(),
 			'username' => $this->string(80)->notNull()->unique(),
 			'email' => $this->string(80)->notNull()->unique(),
@@ -34,7 +36,7 @@ class m250821_212746_create_user_table extends Migration
 			'updated_at' => $this->integer()->notNull(),
 		], $tableOptions);
 
-        $this->insert('{{%user}}', [
+        $this->insert($table, [
 			'username' => 'admin',
 			'email' => 'admin@example.com',
 			'first_name' => 'Admin',
@@ -46,7 +48,6 @@ class m250821_212746_create_user_table extends Migration
 			'created_at' => 0,
 			'updated_at' => 0,
 		]);
-
     }
 
     /**
@@ -54,17 +55,19 @@ class m250821_212746_create_user_table extends Migration
      */
     public function down()
     {
+		$table = '{{%user}}';
+
 		$this->dropForeignKey(
             'fk_user_role_id',
-            '{{%user}}'
+            $table
         );
 
         // drops index for column `role_id`
         $this->dropIndex(
             'idx_user_role_id',
-            '{{%user}}'
+            $table
         );
 
-        $this->dropTable('{{%user}}');
+        $this->dropTable($table);
     }
 }

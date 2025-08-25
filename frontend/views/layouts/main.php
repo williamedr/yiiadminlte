@@ -6,7 +6,7 @@
 use yii\helpers\Html;
 
 
-if (Yii::$app->controller->action->id == 'login') {
+if (in_array(Yii::$app->controller->action->id, ['login', 'signup', 'reset-password', 'request-password-reset'])) {
     echo $this->render('main-login', ['content' => $content]);
 
 } else {

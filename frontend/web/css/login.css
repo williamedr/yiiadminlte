@@ -1,0 +1,17 @@
+.login-page {
+    background-image: url('../img/asis_logo.jpg'); /* Path to your image */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from tiling */
+    position: fixed; /* Or absolute, depending on your layout */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place it behind other content */
+}
+
+.login-logo img {
+	width: 360px;
+	height: 100px;
+}

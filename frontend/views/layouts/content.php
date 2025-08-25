@@ -19,6 +19,7 @@ use yii\bootstrap4\Breadcrumbs;
                         ?>
                     </h1>
                 </div><!-- /.col -->
+
                 <div class="col-sm-6">
                     <?php
                     echo Breadcrumbs::widget([

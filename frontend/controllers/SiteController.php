@@ -77,7 +77,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if (Yii::$app->user->isGuest) {
+            return $this->goLogin(true);
+        }
+
+        return $this->goIndex(false);
     }
 
     /**
@@ -93,7 +97,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->goHome();
         }
 
         $model->password = '';
@@ -112,7 +116,7 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->goLogin(true);
     }
 
     /**
@@ -258,4 +262,38 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+
+
+	/**
+	 * Logs in a user.
+	 *
+	 * @return mixed
+	 */
+	private function goLogin($redirect = true)
+	{
+		if ($redirect) {
+			return $this->redirect('login');
+
+		} else {
+			$model = new LoginForm();
+
+			$model->password = '';
+
+			return $this->render('login', [
+				'model' => $model,
+			]);
+		}
+	}
+
+
+	private function goIndex($redirect = true)
+	{
+		if ($redirect) {
+			return $this->redirect('index');
+        } else {
+            return $this->render('index');
+        }
+	}
+
+
 }

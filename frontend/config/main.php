@@ -10,7 +10,6 @@ return [
     'id' => 'app-frontend',
     'name' => 'Asis Consultores',
     'basePath' => dirname(__DIR__),
-    'defaultRoute' => 'site/login',
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [

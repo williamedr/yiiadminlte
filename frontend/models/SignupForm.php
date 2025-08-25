@@ -13,6 +13,8 @@ class SignupForm extends Model
 {
     public $username;
     public $email;
+    public $first_name;
+    public $last_name;
     public $password;
 
 
@@ -35,6 +37,12 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+
+            ['first_name', 'trim'],
+            ['first_name', 'required'],
+
+            ['last_name', 'trim'],
+            ['last_name', 'required'],
         ];
     }
 
@@ -52,16 +60,20 @@ class SignupForm extends Model
         $user = new User();
         $user->username = $this->username;
         $user->email = $this->email;
+        $user->first_name = $this->first_name;
+        $user->last_name = $this->last_name;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
 
         if ($user->save()) {
+            $auth = Yii::$app->authManager;
+            $userRole = $auth->getRole('user');
+            $auth->assign($userRole, $user->getId());
+
             $this->sendEmail($user);
 
-            $auth = Yii::$app->authManager;
-            $authorRole = $auth->getRole('user');
-            $auth->assign($authorRole, $user->getId());
+            return true;
 
         } else {
             return false;

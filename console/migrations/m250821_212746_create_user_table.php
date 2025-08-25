@@ -26,7 +26,6 @@ class m250821_212746_create_user_table extends Migration
 			'email' => $this->string(80)->notNull()->unique(),
 			'first_name' => $this->string(50)->notNull(),
 			'last_name' => $this->string(50)->notNull(),
-			'role_id' => $this->integer()->notNull()->defaultValue(2),
 			'status' => $this->smallInteger()->notNull()->defaultValue(1),
 			'password_hash' => $this->string()->notNull(),
 			'password_reset_token' => $this->string(),
@@ -41,7 +40,6 @@ class m250821_212746_create_user_table extends Migration
 			'email' => 'admin@example.com',
 			'first_name' => 'Admin',
 			'last_name' => 'Admin',
-			'role_id' => 1,
 			'status' => 1,
 			'password_hash' => Yii::$app->security->generatePasswordHash('admin'),
 			'auth_key' => Yii::$app->security->generateRandomString(),
@@ -56,17 +54,6 @@ class m250821_212746_create_user_table extends Migration
     public function down()
     {
 		$table = '{{%user}}';
-
-		$this->dropForeignKey(
-            'fk_user_role_id',
-            $table
-        );
-
-        // drops index for column `role_id`
-        $this->dropIndex(
-            'idx_user_role_id',
-            $table
-        );
 
         $this->dropTable($table);
     }

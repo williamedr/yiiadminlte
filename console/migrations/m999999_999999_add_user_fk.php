@@ -27,18 +27,14 @@ class m999999_999999_add_user_fk extends Migration
     {
         $table = '{{%user}}';
 
-        $this->createIndex(
-            'idx_user_role_id',
-            $table,
-            'role_id'
-        );
-
         $this->addForeignKey(
-            'fk_user_role_id',
+            'fk_auth_assignment_user_id',
+            '{{%auth_assignment}}',
+            'user_id',
             $table,
-            'role_id',
-            '{{%role}}',
-            'id'
+            'id',
+            'CASCADE',
+            'CASCADE',
         );
 
     }

@@ -9,10 +9,10 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
-use common\models\LoginForm;
 
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
+use frontend\models\LoginForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\ResendVerificationEmailForm;
@@ -162,7 +162,7 @@ class SiteController extends Controller
 		$model = new SignupForm();
 		if ($model->load(Yii::$app->request->post()) && $model->signup()) {
 			Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-			return $this->goHome();
+			return $this->goLogin();
 		}
 
 		return $this->render('signup', [

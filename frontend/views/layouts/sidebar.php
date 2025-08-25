@@ -1,3 +1,8 @@
+<?php
+    $uname = trim($user->first_name) . " " . trim($user->last_name);
+    $uname = trim($uname);
+?>
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
@@ -14,7 +19,7 @@
             </div>
 
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block"><?= $uname ?></a>
             </div>
         </div>
 

@@ -10,6 +10,7 @@ if (in_array(Yii::$app->controller->action->id, ['login', 'signup', 'reset-passw
     echo $this->render('main-login', ['content' => $content]);
 
 } else {
+    $_user = Yii::$app->user->identity;
 
     \hail812\adminlte3\assets\FontAwesomeAsset::register($this);
     \hail812\adminlte3\assets\AdminLteAsset::register($this);
@@ -43,7 +44,7 @@ if (in_array(Yii::$app->controller->action->id, ['login', 'signup', 'reset-passw
                 <!-- /.navbar -->
 
                 <!-- Main Sidebar Container -->
-                <?= $this->render('sidebar', ['assetDir' => $assetDir]) ?>
+                <?= $this->render('sidebar', ['assetDir' => $assetDir, 'user' => $_user]) ?>
 
                 <!-- Content Wrapper. Contains page content -->
                 <?= $this->render('content', ['content' => $content, 'assetDir' => $assetDir]) ?>

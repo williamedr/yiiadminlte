@@ -20,7 +20,6 @@ use yii\web\IdentityInterface;
  * @property string $auth_key
  * @property string $first_name
  * @property string $last_name
- * @property string $role_id
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at

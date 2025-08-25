@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'attribute' => 'created_at',
+                'label' => 'Created Date',
                 'value' => function($data) {
                     if ($data->created_at != '') {
                         return date("m-d-Y H:i:s", $data->created_at);
@@ -66,9 +67,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'floatHeader' => true,
             'headerRowOptions' => ['class' => 'thead-light'],
 
-            'rowOptions' => function($data) {
-                return ['class' => ($data->status == 'active') ? 'success' : 'danger'];
-            },
+            // 'rowOptions' => function($data) {
+            //     return ['class' => ($data->status == 'active') ? 'success' : 'danger'];
+            // },
 
             // 'panel' => [
             //     'before' => ' ', // Or add your toolbar content here

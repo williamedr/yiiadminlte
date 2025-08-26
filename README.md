@@ -16,15 +16,15 @@ docker-compose up -d
 ```
 
 
-### Frontend:   [Frontend] (http://localhost:8090/)\
+### Frontend:   [Frontend] (http://localhost:8090/)
 
-### Backend:    [Backend] (http://localhost:8091/)\
+### Backend:    [Backend] (http://localhost:8091/)
 
-### PHPMyAdmin: [PHPMyAdmin] (http://localhost:8092/)\
+### PHPMyAdmin: [PHPMyAdmin] (http://localhost:8092/)
 
-### MySQL:          admin/secret\
+### MySQL:          admin/secret
 
-### Admin User:     admin/admin\
+### Admin User:     admin/admin
 
 
 INSTALL INSTRUCTIONS

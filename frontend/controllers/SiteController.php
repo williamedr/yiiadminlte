@@ -272,7 +272,7 @@ class SiteController extends Controller
 	private function goLogin($redirect = true)
 	{
 		if ($redirect) {
-			return $this->redirect('login');
+			return $this->redirect('/site/login');
 
 		} else {
 			$model = new LoginForm();
